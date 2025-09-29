@@ -8,7 +8,7 @@ http
       //check GET request and the path
 
       const filePath = path.join(__dirname, 'public', 'index.html');
-      
+
       fs.readFile(filePath, function (err, html) {
         if (err) {
           res.writeHead(500, { 'Content-Type': 'text/html' });
@@ -22,6 +22,11 @@ http
       });
       return;
     }
+
+    res.writeHead(404, { 'Content-Type': 'text/html' });
+    res.write('404 Not Found');
+    res.end();
+    
   })
   .listen(3000, () => {
     console.log('Server running at localhost:3000/');
